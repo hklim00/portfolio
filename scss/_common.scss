@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Vibur&display=swap');
+
+@import "mixin","color";
+
+// common
+html,body{
+  font-family: 'Barlow Semi Condensed', sans-serif;
+  // font-family: 'Vibur', cursive;
+  font-size:14px;
+  font-weight: normal;
+  line-height: 1;
+  letter-spacing: 1px;
+  color: #0e0e0e ;
+}
+.inner{
+  max-width: 1380px;
+  width: 100%;
+  margin: 0 auto;
+  h2{
+    font-size: 38px;
+    font-weight: bold;
+    color: $black;
+    margin-bottom: 50px;
+    font-style: italic;
+  }
+}
+.wrap::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.flex_wrap {
+  @include flexWrap();
+}
