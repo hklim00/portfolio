@@ -104,11 +104,11 @@ html, body {
 }
 #header .btn_call {
   display: none;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   position: fixed;
   right: 5vw;
-  top: 25px;
+  top: 22px;
   z-index: 100;
 }
 #header .btn_call::before {
@@ -120,6 +120,7 @@ html, body {
   position: absolute;
   top: 0;
   left: 0;
+  transform: rotate(0deg);
   transition: all 0.5s;
 }
 #header .btn_call::after {
@@ -131,6 +132,7 @@ html, body {
   position: absolute;
   bottom: 0;
   left: 0;
+  transform: rotate(0deg);
   transition: all 0.5s;
 }
 #header .btn_call span {
@@ -146,24 +148,40 @@ html, body {
   font-size: 0;
   transition: all 0.5s;
 }
+#header .btn_call.active {
+  transform-origin: center center;
+}
+#header .btn_call.active::before {
+  top: calc(50% - 1px);
+  transform: rotate(45deg);
+}
+#header .btn_call.active::after {
+  top: calc(50% - 1px);
+  transform: rotate(-45deg);
+}
+#header .btn_call.active span {
+  opacity: 0;
+  transform: translateX(-100%);
+}
 #header .menu_m {
-  display: none;
   position: fixed;
-  top: 0;
+  top: -100vh;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 0;
   background: #fbf1d6;
   z-index: 50;
   padding-top: 70px;
+  opacity: 0;
+  transition: 0.5s;
 }
 #header .menu_m h1 {
   text-align: center;
   font-size: 0;
-  margin: 7vmin 0 10vmin;
+  margin: 7vmin 0 12vmin;
 }
 #header .menu_m h1 a {
-  font: normal 16vmin/1 "Vibur";
+  font: normal 14vmin/1 "Vibur";
   color: #73bb74;
 }
 #header .menu_m h1 span {
@@ -172,12 +190,17 @@ html, body {
 }
 #header .menu_m #gnb_m li {
   text-align: center;
-  margin-bottom: 25px;
+  margin-bottom: 5vh;
 }
 #header .menu_m #gnb_m li a {
-  font: bold 12vmin/1 "Vibur";
+  font: bold 8vmin/1 "Vibur";
   letter-spacing: 2px;
   color: #0e0e0e;
+}
+#header .menu_m.open {
+  top: 0;
+  height: 100vh;
+  opacity: 1;
 }
 
 #main {
@@ -538,6 +561,9 @@ html, body {
   }
   #header .inner #logo a {
     font-size: 32px;
+  }
+  #header .inner .btn_call {
+    display: block;
   }
   #main .inner .wrap .main_video {
     float: none;

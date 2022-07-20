@@ -58,11 +58,11 @@
   // 헴버거 버튼
   .btn_call {
     display: none;
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     position: fixed;
     right: 5vw;
-    top: 25px;
+    top: 22px;
     z-index: 100;
     &::before {
       content: "";
@@ -73,6 +73,7 @@
       position: absolute;
       top: 0;
       left: 0;
+      transform: rotate(0deg);
       transition: all 0.5s;
     }
     &::after {
@@ -84,6 +85,7 @@
       position: absolute;
       bottom: 0;
       left: 0;
+      transform: rotate(0deg);
       transition: all 0.5s;
     }
     span {
@@ -99,25 +101,42 @@
       font-size: 0;
       transition: all 0.5s;
     }
+    &.active{
+      transform-origin: center center;
+      &::before{
+        top:calc(50% - 1px);
+        transform: rotate(45deg);
+      }
+      &::after{
+        top:calc(50% - 1px);
+        transform: rotate(-45deg);
+      }
+      span{
+        opacity: 0;
+        transform: translateX(-100%);
+      }
+    }
   }
 
   // 모바일 header
   .menu_m {
-    display: none;
+    // display: none;
     position: fixed;
-    top:0;
+    top:-100vh;
     left:0;
     width: 100%;
-    height: 100vh;
+    height: 0;
     background: $yellow4;
     z-index: 50;
     padding-top:70px;
+    opacity: 0;
+    transition: .5s;
     h1 {
       text-align: center;
       font-size: 0;
-      margin: 7vmin 0 10vmin;
+      margin: 7vmin 0 12vmin;
       a {
-        font: normal 16vmin/1 "Vibur";
+        font: normal 14vmin/1 "Vibur";
         color: $green;
       }
       span {
@@ -129,13 +148,19 @@
     #gnb_m{
       li{
         text-align: center;
-        margin-bottom: 25px;
+        margin-bottom:5vh;
         a{
-          font:bold 12vmin/1 'Vibur';
+          font:bold 8vmin/1 'Vibur';
           letter-spacing: 2px;
           color: $black;
         }
       }
+    }
+
+    &.open{
+      top:0;
+      height: 100vh;
+      opacity: 1;
     }
   }
 }
@@ -539,6 +564,9 @@
         a {
           font-size: 32px;
         }
+      }
+      .btn_call{
+        display: block;
       }
     }
   }
