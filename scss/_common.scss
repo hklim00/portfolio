@@ -33,3 +33,9 @@ html,body{
 .flex_wrap {
   @include flexWrap();
 }
+
+.hidden{
+  position:absolute; 
+  top:-9999px; 
+  opacity:0; 
+}

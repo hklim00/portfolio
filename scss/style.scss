@@ -1,5 +1,5 @@
 @charset "utf8";
-@import "reset", "common", "mixin", "color";
+@import "reset", "common", "mixin", "color","sub_layout","contact","notice";
 
 #header {
   background: $yellow4;
@@ -351,6 +351,40 @@
         position: absolute;
         top: -20px;
         right: -20px;
+      }
+    }
+  }
+}
+
+#about{
+  @include check;
+  .inner{
+    .wrap{
+      
+      article{
+        perspective: 900px;
+        
+        float: left;
+        width: 50%;
+        height: 500px;
+        @include center;
+       
+
+        figure{
+          transform: scale3d(1, 1, 1);
+          transition: 1s;
+          width: 400px;
+          height: 400px;
+          img{
+            @include fit
+          }
+        }
+        &:hover{
+          figure{
+            transform: scale3d(.8, .8, .8);
+          }
+          
+        }
       }
     }
   }

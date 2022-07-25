@@ -1,0 +1,311 @@
+// header_sub
+#header_sub {
+  background: $yellow4;
+  border-bottom: 2px solid $black;
+  .inner {
+    position: relative;
+    height: 70px;
+    width: 100%;
+    #logo {
+      position: absolute;
+      height: 100%;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      a {
+        font: normal 40px/70px "Vibur";
+        color: $pink4;
+      }
+    }
+    #nav {
+      width: 100%;
+      height: 100%;
+      padding: 20px 0;
+      &:after {
+        content: "";
+        display: block;
+        clear: both;
+      }
+      ul {
+        &:nth-child(1) {
+          float: left;
+          li:nth-child(1) {
+            margin-left: 0;
+          }
+        }
+        &:nth-child(2) {
+          float: right;
+        }
+        li {
+          float: left;
+          margin-left: 20px;
+          a {
+            display: block;
+            font-size: 18px;
+            font-weight: bold;
+            color: $black;
+            text-align: center;
+            border-radius: 25px;
+            padding: 5px 20px;
+          }
+        }
+      }
+    }
+  }
+
+  // 헴버거 버튼
+  .btn_call {
+    display: none;
+    width: 24px;
+    height: 24px;
+    position: fixed;
+    right: 5vw;
+    top: 22px;
+    z-index: 100;
+    &::before {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: $black;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: rotate(0deg);
+      transition: all 0.5s;
+    }
+    &::after {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: $black;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      transform: rotate(0deg);
+      transition: all 0.5s;
+    }
+    span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: $black;
+      position: absolute;
+      top: 50%;
+      margin-top: -1px;
+      left: 0;
+      text-indent: -9999px;
+      font-size: 0;
+      transition: all 0.5s;
+    }
+    &.active{
+      transform-origin: center center;
+      &::before{
+        top:calc(50% - 1px);
+        transform: rotate(45deg);
+      }
+      &::after{
+        top:calc(50% - 1px);
+        transform: rotate(-45deg);
+      }
+      span{
+        opacity: 0;
+        transform: translateX(-100%);
+      }
+    }
+  }
+
+  // 모바일 header
+  .menu_m {
+    // display: none;
+    position: fixed;
+    top:-100vh;
+    left:0;
+    width: 100%;
+    height: 0;
+    background: $yellow4;
+    z-index: 50;
+    padding-top:70px;
+    opacity: 0;
+    transition: .5s;
+    h1 {
+      text-align: center;
+      font-size: 0;
+      margin: 7vmin 0 12vmin;
+      a {
+        font: normal 14vmin/1 "Vibur";
+        color: $green;
+      }
+      span {
+        font-size: 3vmin;
+        color:$blue
+      }
+    }
+
+    #gnb_m{
+      li{
+        text-align: center;
+        margin-bottom:5vh;
+        a{
+          font:bold 8vmin/1 'Vibur';
+          letter-spacing: 2px;
+          color: $black;
+        }
+      }
+    }
+
+    &.open{
+      top:0;
+      height: 100vh;
+      opacity: 1;
+    }
+  }
+}
+
+
+// sub page contents
+.contents{
+  width: 100%;
+  padding: 150px 0;
+  
+  .inner{
+    min-height: 500px;
+    display: flex;
+    h1{
+      font-size: 50px;
+      font-weight: bold;
+      color: $black;
+      font-style: italic;
+      text-align: left;
+      margin-bottom: 80px;
+      width: 30%;
+    }
+    .content_r {
+      flex: 1;
+      position: relative;
+      width: 100%;
+      max-width: 1024px;
+    }
+  }
+}
+
+// footer_sub
+#footer_sub {
+  padding: 100px 0;
+  background: $yellow4;
+  border-top: 2px solid $black;
+  .inner {
+    .wrap {
+      .foot_l {
+        float: left;
+        h1 {
+          font: normal 32px/1 "Vibur";
+          color: $green;
+        }
+        ul {
+          margin-top: 30px;
+          &::after {
+            content: "";
+            display: block;
+            clear: both;
+          }
+          li {
+            float: left;
+            margin-right: 20px;
+            a {
+              color: $black;
+              font-size: 16px;
+              font-weight: bold;
+            }
+          }
+        }
+        p {
+          font-size: 12px;
+          color: $black;
+          margin-top: 30px;
+        }
+      }
+      .foot_r {
+        float: right;
+        .links {
+          a {
+            float: left;
+            font-size: 24px;
+            color: $green;
+            margin-left: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// 1380 이하
+@include desktop {
+  #header_sub {
+    padding: 0 5vw;
+  }
+
+
+  #footer_sub {
+    padding: 100px 5vw;
+  }
+}
+
+// 1024 이하
+@include tabletH {
+ 
+}
+
+// 768 이하
+@include tabletV {
+  #header_sub {
+    .inner {
+      #nav {
+        display: none;
+      }
+      #logo {
+        position: relative;
+        left: auto;
+        transform: translateX(0%);
+        a {
+          font-size: 32px;
+        }
+      }
+      .btn_call{
+        display: block;
+      }
+    }
+  }
+
+}
+
+// 539 이하
+@include mobile {
+ 
+  #footer_sub .inner .wrap {
+    .foot_l {
+      ul li {
+        margin-right: 20px;
+      }
+      p {
+        text-align: left;
+      }
+    }
+    .foot_r {
+      width: 100%;
+      margin-top: 100px;
+      .links {
+        text-align: center;
+        a {
+          float: none;
+          margin-left: 30px;
+          &:first-child {
+            margin-left: 0;
+          }
+        }
+      }
+    }
+  }
+}
